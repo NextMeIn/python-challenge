@@ -5,13 +5,13 @@ import csv
 election_data_csv = os.path.join('..','..','..','Resources','election_data.csv')
 with open(election_data_csv, 'r', newline = '', encoding='utf-8') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
+    next(csvreader)
+    data = {}
     for x in csvreader:
-        data = {}
-        for x in csvreader:
-            if x[2] not in data.keys():
-                data[x[2]] = 1
-            else:
-                data[x[2]] = data[x[2]] + 1
+        if x[2] not in data.keys():
+            data[x[2]] = 1
+        else:
+            data[x[2]] = data[x[2]] + 1
 
 def totalvotes(dict1):
     total = 0
